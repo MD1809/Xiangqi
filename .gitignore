@@ -1,0 +1,77 @@
+# 1. Môi trường & IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.sublime-workspace
+*.sublime-project
+
+# 2. Hệ điều hành
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# 3. Backend - Java & Spring Boot (Maven / Gradle)
+target/
+build/
+bin/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.mvn/wrapper/maven-wrapper.jar
+hs_err_pid*
+
+# 4. Frontend - NodeJS, Vite, npm/yarn/pnpm
+node_modules/
+dist/
+dist-ssr/
+*.local
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+.stylelintcache
+
+# 5. Biến môi trường & Bí mật bảo mật (Secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+*.jks
+
+# 6. Dữ liệu Database cục bộ & Docker volumes
+mysql_data/
+redis_data/
+*.sql.gz
+*.dump
+
+# 7. Nhật ký (Logs)
+logs/
+*.log
+
+# 8. Temporary & Test Output
+coverage/
+.nyc_output/
+test-output/
+scratch/
+
+# 9. Documents
+docs/
+AGENTS.md
+
+# 10. AGENT
+*.agents
