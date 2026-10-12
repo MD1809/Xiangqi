@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-wood-950 text-parchment-200 font-body;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%),
+      radial-gradient(circle at 10% 90%, rgba(187, 62, 3, 0.06) 0%, transparent 60%);
+  }
+}
+
+/* Hiệu ứng viền cổ phong & nhũ kim */
+.border-gold-ornate {
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1), inset 0 0 15px rgba(212, 175, 55, 0.05);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFE088 0%, #D4AF37 50%, #997D24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cinnabar-gradient-text {
+  background: linear-gradient(135deg, #FFB3AE 0%, #BB3E03 50%, #8F191F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.chinese-corner {
+  position: relative;
+}
+.chinese-corner::before,
+.chinese-corner::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #D4AF37;
+  pointer-events: none;
+}
+.chinese-corner::before {
+  top: 4px;
+  left: 4px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.chinese-corner::after {
+  bottom: 4px;
+  right: 4px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
