@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Database, Server, RefreshCw, Sparkles, Swords, Crown, BookOpen } from 'lucide-react';
+import XiangqiBoard from './components/board/XiangqiBoard';
 
 export default function App() {
   const [health, setHealth] = useState(null);
@@ -47,26 +48,31 @@ export default function App() {
           <div className="flex items-center space-x-4 text-xs font-mono">
             <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-wood-850 border border-gold-600/30">
               <span className="w-2 h-2 rounded-full bg-jade-400 animate-pulse"></span>
-              <span className="text-parchment-300">Phase 1: Khởi Tạo Dự Án</span>
+              <span className="text-parchment-300">Phase 1: Task 1.1.3 - Khung Bàn Cờ</span>
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-6 py-12 flex-1 w-full flex flex-col items-center justify-center">
-        {/* Banner Hero */}
-        <div className="text-center mb-10 max-w-2xl">
-          <div className="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-cinnabar-900/40 border border-cinnabar-600/40 text-cinnabar-400 text-xs mb-4">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full flex flex-col items-center">
+        {/* Banner Tiêu Đề */}
+        <div className="text-center mb-8 max-w-2xl">
+          <div className="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-cinnabar-900/40 border border-cinnabar-600/40 text-cinnabar-400 text-xs mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Môi Trường Phát Triển Cục Bộ Sẵn Sàng (Task 1.1.1)</span>
+            <span>Task 1.1.3: Dựng Khung Bàn Cờ Cổ Phong 9x10 (XiangqiBoard.jsx)</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-headline font-bold mb-4 tracking-tight">
-            Nền Tảng Cờ Tướng Trực Tuyến
+          <h2 className="text-3xl md:text-4xl font-headline font-bold mb-2 tracking-tight">
+            Kỳ Đài Thi Đấu Hoàng Gia
           </h2>
-          <p className="text-parchment-300 text-sm md:text-base leading-relaxed">
-            Hệ thống Spring Boot 3 &amp; Vite React đã được thiết lập thành công. Kết nối trực tiếp cơ sở dữ liệu MySQL cục bộ chuẩn bị cho Bộ máy luật cờ tướng thuần túy (Task 1.1.2).
+          <p className="text-parchment-300 text-xs md:text-sm">
+            Khung lưới 9x10 vector SVG, Cửu Cung chữ X, hoa văn chữ thập góc định vị và sông Sở Hà - Hán Giới (Chuẩn thiết kế Stitch).
           </p>
+        </div>
+
+        {/* Khung Bàn Cờ Trung Tâm */}
+        <div className="w-full flex justify-center mb-10">
+          <XiangqiBoard />
         </div>
 
         {/* Trạng Thái Hệ Thống Card */}
