@@ -2,10 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design system tokens & animations - reloaded */
+
+:root {
+  --board-surface: #EED09D;
+  --board-grid: #735C00;
+  --board-watermark: #574500;
+}
+
 @layer base {
+
+  *,
+  ::before,
+  ::after {
+    border-color: #4D4635;
+  }
+
   body {
     @apply bg-wood-950 text-parchment-200 font-body;
-    background-image: 
+    background-image:
       radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%),
       radial-gradient(circle at 10% 90%, rgba(187, 62, 3, 0.06) 0%, transparent 60%);
   }
@@ -32,6 +47,7 @@
 .chinese-corner {
   position: relative;
 }
+
 .chinese-corner::before,
 .chinese-corner::after {
   content: '';
@@ -41,15 +57,34 @@
   border-color: #D4AF37;
   pointer-events: none;
 }
+
 .chinese-corner::before {
   top: 4px;
   left: 4px;
   border-top: 2px solid;
   border-left: 2px solid;
 }
+
 .chinese-corner::after {
   bottom: 4px;
   right: 4px;
   border-bottom: 2px solid;
   border-right: 2px solid;
+}
+
+/* Màu chữ tương phản cao trên nền vàng kim */
+.text-on-gold,
+.hover\:text-on-gold:hover,
+.group:hover .group-hover\:text-on-gold {
+  color: #140D07 !important;
+}
+
+/* Màu chữ tối */
+.text-wood {
+  color: #140D07 !important;
+}
+
+/* Màu ngọc bích sáng */
+.text-jade-300 {
+  color: #9DDCBB !important;
 }
