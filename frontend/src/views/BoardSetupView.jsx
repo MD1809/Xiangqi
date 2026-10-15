@@ -1,8 +1,22 @@
-import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, RotateCcw } from 'lucide-react';
 import XiangqiBoard from '../components/board/XiangqiBoard';
+import { parseFEN, INITIAL_FEN } from '../utils/fenUtils';
 
 export default function BoardSetupView({ onNavigateToLobby }) {
+  const [pieces, setPieces] = useState(() => parseFEN(INITIAL_FEN));
+  const [selectedPieceId, setSelectedPieceId] = useState(null);
+
+
+  const handlePieceClick = (piece) => {
+    setSelectedPieceId((prevId) => (prevId === piece.id ? null : piece.id));
+  };
+
+  const handleResetBoard = () => {
+    setPieces(parseFEN(INITIAL_FEN));
+    setSelectedPieceId(null);
+  };
+
   return (
     <div className="min-h-screen bg-wood-950 text-parchment-200 flex flex-col justify-between selection:bg-gold-400 selection:text-on-gold">
       {/* Top Header */}
@@ -22,23 +36,33 @@ export default function BoardSetupView({ onNavigateToLobby }) {
             </h1>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-jade-500 animate-pulse" />
-            <span className="text-parchment-300">Nghiên Cứu Thế Cờ</span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleResetBoard}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-wood-800 hover:bg-wood-700 border border-wood-500 text-xs font-headline text-parchment-200 hover:text-gold-300 transition-colors"
+              title="Đặt lại thế cờ ban đầu"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-gold-400" />
+              <span className="hidden sm:inline">Dàn Trận Ban Đầu</span>
+            </button>
           </div>
         </div>
       </header>
 
       {/* Main Board Content */}
-      <main className="max-w-5xl mx-auto px-4 py-8 flex-1 w-full flex flex-col items-center">
+      <main className="max-w-5xl mx-auto px-4 py-6 flex-1 w-full flex flex-col items-center">
         {/* Khung bàn cờ */}
-        <div className="w-full flex justify-center mb-8">
-          <XiangqiBoard />
+        <div className="w-full flex justify-center mb-6">
+          <XiangqiBoard
+            pieces={pieces}
+            selectedPieceId={selectedPieceId}
+            onPieceClick={handlePieceClick}
+          />
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-wood-700 py-4 text-center text-xs text-parchment-400 font-headline">
+      <footer className="border-t border-wood-700 py-3 text-center text-xs text-parchment-400 font-headline">
         <p>Kỳ Vương © 2026 • Đỉnh Cao Cờ Tướng Hoàng Gia Đông Á</p>
       </footer>
     </div>

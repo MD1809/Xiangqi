@@ -8,6 +8,26 @@
   --board-surface: #EED09D;
   --board-grid: #735C00;
   --board-watermark: #574500;
+
+  /* Quân Đỏ - Hoàng Triều Sơn Son & Vàng Kim */
+  --piece-red-bg-top: #441417;
+  --piece-red-bg-mid: #250B0D;
+  --piece-red-bg-bottom: #140506;
+  --piece-red-border-gold: #D4AF37;
+  --piece-red-ring-gold: #F2CA50;
+  --piece-red-text: #FF8A80;
+  --piece-red-glow: rgba(212, 175, 55, 0.45);
+  --piece-red-shadow: rgba(0, 0, 0, 0.65);
+
+  /* Quân Đen - Cung Đình Than Củi & Ngọc Bích */
+  --piece-black-bg-top: #2C2622;
+  --piece-black-bg-mid: #1A1614;
+  --piece-black-bg-bottom: #0E0C0B;
+  --piece-black-border-jade: #52B788;
+  --piece-black-ring-jade: #82C0A0;
+  --piece-black-text: #9DDCBB;
+  --piece-black-glow: rgba(82, 183, 136, 0.45);
+  --piece-black-shadow: rgba(0, 0, 0, 0.65);
 }
 
 @layer base {

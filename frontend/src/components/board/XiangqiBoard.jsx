@@ -1,8 +1,16 @@
 import React, { Fragment } from 'react';
+import PieceRenderer from './PieceRenderer';
 
 const GRID_COLOR = 'var(--board-grid, #735C00)';
 
-export default function XiangqiBoard({ children, className = '' }) {
+export default function XiangqiBoard({
+  pieces = [],
+  selectedPieceId = null,
+  lastMovePieceId = null,
+  onPieceClick,
+  children,
+  className = '',
+}) {
   const topCoordinates = ['九', '八', '七', '六', '五', '四', '三', '二', '一'];
   const bottomCoordinates = ['一', '二', '三', '四', '五', '六', '七', '八', '九'];
 
@@ -191,6 +199,26 @@ export default function XiangqiBoard({ children, className = '' }) {
               height: `${(900 / 1010) * 100}%`,
             }}
           >
+            {pieces.map((piece) => (
+              <div
+                key={piece.id || `${piece.char}_${piece.x}_${piece.visualRow}`}
+                className="absolute"
+                style={{
+                  left: `${(piece.x / 8) * 100}%`,
+                  top: `${(piece.visualRow / 9) * 100}%`,
+                  width: '10.8%',
+                  aspectRatio: '1 / 1',
+                  transform: 'translate(-50%, -50%)',
+                }}
+              >
+                <PieceRenderer
+                  piece={piece}
+                  isSelected={selectedPieceId === piece.id}
+                  isLastMove={lastMovePieceId === piece.id}
+                  onClick={() => onPieceClick && onPieceClick(piece)}
+                />
+              </div>
+            ))}
             {children}
           </div>
         </div>
