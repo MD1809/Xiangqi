@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PieceRenderer from './PieceRenderer';
+import MoveIndicator from './MoveIndicator';
 
 const GRID_COLOR = 'var(--board-grid, #735C00)';
 
@@ -7,7 +8,9 @@ export default function XiangqiBoard({
   pieces = [],
   selectedPieceId = null,
   lastMovePieceId = null,
+  legalMoves = [],
   onPieceClick,
+  onTargetClick,
   children,
   className = '',
 }) {
@@ -219,6 +222,16 @@ export default function XiangqiBoard({
                 />
               </div>
             ))}
+
+            {/* Chỉ dẫn nước đi hợp lệ */}
+            {legalMoves.map((target, idx) => (
+              <MoveIndicator
+                key={`move-target-${target.x}-${target.y}-${idx}`}
+                target={target}
+                onClick={() => onTargetClick && onTargetClick(target)}
+              />
+            ))}
+
             {children}
           </div>
         </div>

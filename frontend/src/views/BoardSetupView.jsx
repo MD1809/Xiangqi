@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ArrowLeft, RotateCcw } from 'lucide-react';
 import XiangqiBoard from '../components/board/XiangqiBoard';
 import { parseFEN, INITIAL_FEN } from '../utils/fenUtils';
+import { getLegalMoves } from '../utils/moveRules';
 
 export default function BoardSetupView({ onNavigateToLobby }) {
   const [pieces, setPieces] = useState(() => parseFEN(INITIAL_FEN));
   const [selectedPieceId, setSelectedPieceId] = useState(null);
 
+  const selectedPiece = pieces.find((p) => p.id === selectedPieceId);
+
+  const legalMoves = useMemo(() => {
+    if (!selectedPiece) return [];
+    return getLegalMoves(selectedPiece, pieces);
+  }, [selectedPiece, pieces]);
 
   const handlePieceClick = (piece) => {
     setSelectedPieceId((prevId) => (prevId === piece.id ? null : piece.id));
@@ -17,8 +24,17 @@ export default function BoardSetupView({ onNavigateToLobby }) {
     setSelectedPieceId(null);
   };
 
+  const handleBoardBackgroundClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setSelectedPieceId(null);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-wood-950 text-parchment-200 flex flex-col justify-between selection:bg-gold-400 selection:text-on-gold">
+    <div
+      onClick={handleBoardBackgroundClick}
+      className="min-h-screen bg-wood-950 text-parchment-200 flex flex-col justify-between selection:bg-gold-400 selection:text-on-gold"
+    >
       {/* Top Header */}
       <header className="border-b border-wood-700 bg-wood-900/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
@@ -32,7 +48,7 @@ export default function BoardSetupView({ onNavigateToLobby }) {
             </button>
             <div className="h-4 w-px bg-wood-500" />
             <h1 className="font-headline text-lg font-bold text-gold-300">
-              Xếp Cờ
+              Xếp Cờ Và Nghiên Cứu Thế Cờ
             </h1>
           </div>
 
@@ -52,10 +68,11 @@ export default function BoardSetupView({ onNavigateToLobby }) {
       {/* Main Board Content */}
       <main className="max-w-5xl mx-auto px-4 py-6 flex-1 w-full flex flex-col items-center">
         {/* Khung bàn cờ */}
-        <div className="w-full flex justify-center mb-6">
+        <div className="w-full flex justify-center mb-4">
           <XiangqiBoard
             pieces={pieces}
             selectedPieceId={selectedPieceId}
+            legalMoves={legalMoves}
             onPieceClick={handlePieceClick}
           />
         </div>

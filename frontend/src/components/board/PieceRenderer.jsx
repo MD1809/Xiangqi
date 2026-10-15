@@ -38,11 +38,10 @@ export default function PieceRenderer({
       role="button"
       tabIndex={0}
       aria-label={`${isRed ? 'Phe Đỏ' : 'Phe Đen'} - ${symbol}`}
-      className={`relative w-full h-full cursor-pointer select-none transition-transform duration-200 ease-out flex items-center justify-center ${
-        isSelected
-          ? 'scale-110 -translate-y-1 z-30 drop-shadow-[0_12px_20px_rgba(242,202,80,0.6)]'
+      className={`relative w-full h-full cursor-pointer select-none transition-transform duration-200 ease-out flex items-center justify-center ${isSelected
+          ? 'scale-110 -translate-y-1 z-30 drop-shadow-[0_12px_20px_rgba(82,183,136,0.65)]'
           : 'hover:scale-105 active:scale-95'
-      } ${className}`}
+        } ${className}`}
     >
       <svg
         viewBox="0 0 100 100"
@@ -167,7 +166,7 @@ export default function PieceRenderer({
             cy="50"
             r="48"
             fill="none"
-            stroke="var(--piece-red-ring-gold)"
+            stroke="var(--indicator-ring-jade, #52B788)"
             strokeWidth="2.5"
             strokeDasharray="4 2"
             className="animate-spin"

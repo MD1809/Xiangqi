@@ -28,6 +28,16 @@
   --piece-black-text: #9DDCBB;
   --piece-black-glow: rgba(82, 183, 136, 0.45);
   --piece-black-shadow: rgba(0, 0, 0, 0.65);
+
+  /* Vòng tròn quân đang chọn */
+  --indicator-ring-jade: #52B788;
+  --indicator-ring-jade-bright: #82C0A0;
+  --indicator-ring-jade-glow: rgba(82, 183, 136, 0.65);
+
+  /* Chỉ dẫn ăn quân màu đỏ sát khí */
+  --indicator-capture-ring: #bb1503;
+  --indicator-capture-dot: #BB3E03;
+  --indicator-capture-glow: rgba(187, 62, 3, 0.85);
 }
 
 @layer base {
